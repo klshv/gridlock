@@ -22,5 +22,20 @@ namespace gridlock.application
 
             return true;
         }
+
+        public bool CanMoveRight(Field field, Block inputBlock)
+        {
+            if (inputBlock.X > field.Width)
+            {
+                return false;
+            }
+
+            if (field.Blocks.Any(block => inputBlock.Intesects(block)))
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
