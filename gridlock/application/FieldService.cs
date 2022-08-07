@@ -37,5 +37,35 @@ namespace gridlock.application
 
             return true;
         }
+
+        public bool CanMoveDown(Field field, Block inputBlock)
+        {
+            if (inputBlock.Y == 0)
+            {
+                return false;
+            }
+
+            if (field.Blocks.Any(block => inputBlock.Intesects(block)))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool CanMoveUp(Field field, Block inputBlock)
+        {
+            if (inputBlock.Y > field.Height)
+            {
+                return false;
+            }
+
+            if (field.Blocks.Any(block => inputBlock.Intesects(block)))
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

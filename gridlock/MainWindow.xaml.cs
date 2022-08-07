@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using gridlock.data;
+using gridlock.view_model;
+
 namespace gridlock
 {
     /// <summary>
@@ -20,9 +23,32 @@ namespace gridlock
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private LevelViewModel levelViewModel;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            levelViewModel = new LevelViewModel();
+            this.DataContext = levelViewModel;
         }
+
+        private void GameGridlock_OnLoaded(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void ButtonOptions_Click(object sender, RoutedEventArgs e) {
+
+        }
+        
+        private void ButtonFAQ_Click(object sender, RoutedEventArgs e) {
+
+        }
+        
+        private void ButtonReset_Click(object sender, RoutedEventArgs e) {
+
+        }
+
     }
 }

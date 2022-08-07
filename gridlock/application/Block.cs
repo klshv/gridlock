@@ -1,14 +1,20 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 namespace gridlock.application
 {
-    public enum Direction { Horizontal, Vertical }
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum Direction {
+        Horizontal,
+        Vertical
+    }
 
-    public class Block
+    public record Block
     {
         public Block(int length, Direction direction, int x, int y)
         {
@@ -18,10 +24,10 @@ namespace gridlock.application
             Y = y;
         }
 
-        public int Length { get; private set; }
-        public Direction Direction { get; private set; }
-        public int X { get; private set; }
-        public int Y { get; private set; }
+        public int Length { get; init; }
+        public Direction Direction { get; init; }
+        public int X { get; init; }
+        public int Y { get; init; }
 
         public bool Intesects(Block block2)
         {

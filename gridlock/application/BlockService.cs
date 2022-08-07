@@ -12,19 +12,14 @@ namespace gridlock.application
         {
             if (inputBlock.Direction == Direction.Horizontal)
             {
-                return new Block(inputBlock.Length, inputBlock.Direction, inputBlock.X - 1, inputBlock.Y);
-                /* return inputBlock with { X = inputBlock.X - 1}; */
+                //return new Block(inputBlock.Length, inputBlock.Direction, inputBlock.X - 1, inputBlock.Y);
+                return inputBlock with { X = inputBlock.X - 1};
             }
             else
             {
                 return inputBlock /* with { } */;
             }
         }
-
-        /*public Block GetBlockMovedRight(Block inputBlock)
-        {
-            throw new NotImplementedException();
-        } */
 
         public Block GetBlockMovedRight(Block inputBlock)
         {
@@ -39,12 +34,12 @@ namespace gridlock.application
             }
         }
 
-        public Block GetBlockMovedUp(Block inputBlock)
+        public Block GetBlockMovedDown(Block inputBlock)
         {
             if (inputBlock.Direction == Direction.Vertical)
             {
-                return new Block(inputBlock.Length, inputBlock.Direction, inputBlock.X, inputBlock.Y + 1);
-                /* return inputBlock with { Y = inputBlock.Y + 1}; */
+                return new Block(inputBlock.Length, inputBlock.Direction, inputBlock.X, inputBlock.Y - 1);
+                /* return inputBlock with { Y = inputBlock.Y - 1}; */
             }
             else
             {
@@ -52,12 +47,12 @@ namespace gridlock.application
             }
         }
 
-        public Block GetBlockMovedDown(Block inputBlock)
+        public Block GetBlockMovedUp(Block inputBlock)
         {
             if (inputBlock.Direction == Direction.Vertical)
             {
-                return new Block(inputBlock.Length, inputBlock.Direction, inputBlock.X, inputBlock.Y - 1);
-                /* return inputBlock with { Y = inputBlock.Y - 1}; */
+                return new Block(inputBlock.Length, inputBlock.Direction, inputBlock.X, inputBlock.Y + 1);
+                /* return inputBlock with { Y = inputBlock.Y + 1}; */
             }
             else
             {

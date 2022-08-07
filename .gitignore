@@ -6,3 +6,6 @@
 **/bin/**
 **/obj/**
 **/dist/**
+**/.idea/**
+**/.vs/**
+**/packages/**

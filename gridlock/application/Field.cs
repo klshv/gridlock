@@ -11,7 +11,7 @@ namespace gridlock.application
         public Field(Block target, IEnumerable<Block> blocks, int height, int width)
         {
             Target = target;
-            Blocks = blocks;
+            Blocks = blocks ?? new List<Block>();
             Height = height;
             Width = width;
         }
