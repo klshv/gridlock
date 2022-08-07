@@ -60,6 +60,7 @@
                                 Fill="{Binding Fill}"
                                 Width="{Binding Size.Width}"
                                 Height="{Binding Size.Height}"
+                                MouseMove="OnBlockMove"
                                 >
                                 <Rectangle.Focusable>True</Rectangle.Focusable>
                             </Rectangle>

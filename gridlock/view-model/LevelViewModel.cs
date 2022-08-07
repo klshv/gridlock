@@ -41,10 +41,10 @@ namespace gridlock.view_model
 
                     var blockViewModels = level
                         .Blocks
-                        .Select(x => new BlockViewModel(x, BlockType.Regular, visualSettings, cellSize))
+                        .Select((x, index) => new BlockViewModel(x, $"Block {index}", BlockType.Regular, visualSettings, cellSize))
                         .ToList();
 
-                    BlockViewModel targetBlock = new(level.Target, BlockType.Target, visualSettings, cellSize);
+                    BlockViewModel targetBlock = new(level.Target, "Target Block", BlockType.Target, visualSettings, cellSize);
                     blockViewModels.Add(targetBlock);
 
                     Blocks = new ObservableCollection<BlockViewModel>(blockViewModels);

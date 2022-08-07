@@ -50,5 +50,25 @@ namespace gridlock
 
         }
 
+        private void OnBlockMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed) {
+
+                // Скорее всего понадобится решить проблему - sender это тот, над которым сейчас проводим мышь, а
+                // не блок, который мы подхватили. Необходимо либо запоминать блок, с которого началось движение 
+                // с зажатой кнопкой (сбрасывая это состояние при отпускании кнопки - MouseUp), либо использовать
+                // стандартный механизм Drag-and-Drop (про это нужно читать, как этим пользоваться).
+
+                Rectangle targetRect = sender as Rectangle;
+                BlockViewModel targetBlock = targetRect.DataContext as BlockViewModel;
+
+                var position = targetBlock.ConvertCoordinateScreenToField(e.MouseDevice.GetPosition(this.WorkSpaceGridlock));
+                targetBlock.TryToChangePosition(position);
+
+                Console.WriteLine($"Move {targetBlock.Name} {position.X}x{position.Y}");
+            }
+        }
+
+
     }
 }

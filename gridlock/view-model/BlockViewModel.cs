@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace gridlock.view_model
@@ -15,8 +16,9 @@ namespace gridlock.view_model
 
     public class BlockViewModel : INotifyPropertyChanged
     {
-        public BlockViewModel(Block block, BlockType type, VisualSettingsDataService settings, int cellSize)
+        public BlockViewModel(Block block, string name, BlockType type, VisualSettingsDataService settings, int cellSize)
         {
+            Name = name;
             this.block = block;
             this.cellSize = cellSize;
             this.settings = settings;
@@ -27,6 +29,8 @@ namespace gridlock.view_model
                 _ => throw new NotImplementedException("Specified block type is not supported!")
             };
         }
+
+        public string Name { get; set; }
 
         public int Top
         {
@@ -52,6 +56,13 @@ namespace gridlock.view_model
         {
             get { return fill; }
         }
+
+        public double ConvertCoordinateScreenToField(double coord) => Math.Floor(coord / this.cellSize);
+        public int ConvertCoordinateScreenToField(int coord) => coord / this.cellSize;
+        public Point ConvertCoordinateScreenToField(Point coord) => 
+            new Point(
+                ConvertCoordinateScreenToField(coord.X), 
+                ConvertCoordinateScreenToField(coord.Y));
 
         private readonly Block block;
         private readonly Brush fill;
